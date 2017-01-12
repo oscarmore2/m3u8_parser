@@ -5,6 +5,7 @@ import base64
 import datetime
 import time
 import re
+import sys
 import json
 import urllib
 import urllib2
@@ -26,7 +27,7 @@ def parse_url(video_url):
 
 	def parse_plist(url):
 		id = r1(r'http://\w+.yinyuetai.com/video/(\d+)', url) or r1(r'http://\w+.yinyuetai.com/video/h5/(\d+)', url)
-		print(id)
+		#print(id)
 		html = requests.get("http://www.yinyuetai.com/insite/get-video-info?json=true&videoId=%s" % id).json()
 		#print(html)
 		result = html['videoInfo']['coreVideoInfo']['videoUrlModels'][-1]['videoUrl']
@@ -37,7 +38,10 @@ def parse_url(video_url):
 
 def test():
 	# print parse_url("http://v.youku.com/v_show/id_XODMyNTI2ODI4.html")
-	print parse_url("http://v.yinyuetai.com/video/h5/2558021")
+	if (len(sys.argv)>1):
+		print parse_url(sys.argv[1])
+	else:
+		print parse_url("http://v.yinyuetai.com/video/2704064")
 
 if __name__ == '__main__':
 	test()

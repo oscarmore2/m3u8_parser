@@ -3,6 +3,7 @@ import re
 import requests
 import base64
 import datetime
+import sys
 import time
 import urllib
 
@@ -50,7 +51,7 @@ def parse_url(video_url):
 	template1 = "becaf9be";
 	template2 = "bf7e5f01";
 	bb = bytes(video_ep)
-	print(bb)
+	#print(bb)
 	decoded = base64.b64decode(bb)
 	#bytess = map(lambda x:ord(x), decoded)
 	temp = my_encoder(template1, decoded)
@@ -69,7 +70,11 @@ def parse_url(video_url):
 
 def test():
 	# print parse_url("http://v.youku.com/v_show/id_XODMyNTI2ODI4.html")
-	print parse_url("http://v.youku.com/v_show/id_XMTgxODc5MjgzMg==.html")
+	#print sys.argv
+	if (len(sys.argv)>1):
+		print parse_url(sys.argv[1])
+	else:
+		print parse_url("http://v.youku.com/v_show/id_XMTAxOTMzMTcy.html?from=s1.8-1-1.2&spm=a2h0k.8191407.0.0")
 
 if __name__ == '__main__':
 	test()

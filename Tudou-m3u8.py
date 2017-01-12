@@ -49,7 +49,10 @@ def parse_url(video_url):
 
 def test():
 	# print parse_url("http://v.youku.com/v_show/id_XODMyNTI2ODI4.html")
-	print parse_url("http://www.tudou.com/programs/view/cbsyQNSLYQw/?spm=a2h0k.8191414.cbsyQNSLYQw.A")
+	if (len(sys.argv)>1):
+		print parse_url(sys.argv[1])
+	else:
+		print parse_url("http://www.tudou.com/programs/view/ou5lK2ZrHxg/?spm=a2h0k.8191414.ou5lK2ZrHxg.A")
 
 if __name__ == '__main__':
 	test()
